@@ -4,13 +4,20 @@ This is a Dockerization of the handy dandy [bitly Google OAuth Proxy](https://gi
 
 Check out the bitly github page for more details on the different command line options that can be passed in.
 
-### Quick Start
-    docker run a5huynh/google_auth_proxy \
+### Quickstart with [Fig](fig.sh)
+First, configure your client secret/id/cookie secret in the `fig.yml` file. Then simply run:
+
+    fig up
+   
+The container will be built and an nginx proxy automatically configure to connect to the google auth proxy. Navigate to http://<docker ip>/ping to check out whether the proxy is up and running.
+
+### Quickstart without Fig
+    docker run -P a5huynh/google_auth_proxy \
         --cookie-secret=<cookie-secret> \
         --client-id=<client-id> \
         --client-secret=<client-secret>
 
-### Defaults
+## Configuration
 By default I set the upstream and http-address to the following:
 
     --upstream=http://0.0.0.0:8080/
@@ -25,7 +32,7 @@ Alternatively you can set the cookie-secret, client-id, and/or client-secret as 
     google_auth_client_id     # The Google OAuth Cliendt ID
     google_auth_secret        # The Google OAuth Client Secret
    
-#### Example Usage w/ environment variables
+### Example Usage w/ environment variables
     docker run -e google_auth_cookie_secret=<cookie-secret> \
         -e google_auth_client_id=<client-id> \
         -e google_auth_secret=<client-secret> \

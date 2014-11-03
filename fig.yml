@@ -1,0 +1,33 @@
+#
+# Set up everything we need for an isolated dev environment that is exactly the
+# same as a production environment.
+#
+# Description of Containers:
+#
+#   google_auth   This is where the web system and python dependencies have been built.
+#
+#   proxy         This is the web proxy (to simulate a production environment) from
+#                 80 -> 8000
+#
+
+# Google OAuth Proxy
+googleauth:
+  build: .
+  ports:
+    - "8080:8080"
+    - "4180:4180"
+  environment:
+    google_auth_cookie_secret: totally-secret-key
+    google_auth_client_id: client-id
+    google_auth_secret: client-secret
+
+# NGINX proxy forwarding
+proxy:
+  image: dockerfile/nginx
+  ports:
+    - "80:80"
+  links:
+    - googleauth:googleauth
+  volumes:
+    - ./configs/nginx/nginx.conf:/etc/nginx.conf
+    - ./configs/nginx/sites-enabled:/etc/nginx/sites-enabled
