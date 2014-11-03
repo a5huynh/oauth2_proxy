@@ -4,10 +4,9 @@
 #
 # Description of Containers:
 #
-#   google_auth   This is where the web system and python dependencies have been built.
+#   google_auth   This is the google_auth_proxy container
 #
-#   proxy         This is the web proxy (to simulate a production environment) from
-#                 80 -> 8000
+#   proxy         This is the web proxy pointing to the google_auth container
 #
 
 # Google OAuth Proxy
