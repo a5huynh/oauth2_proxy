@@ -36,7 +36,7 @@ Alternatively you can set the cookie-secret, client-id, and/or client-secret as
 environment variables using the following variables below:
 
     google_auth_cookie_secret # The seed string for secure cookies
-    google_auth_client_id     # The Google OAuth Cliendt ID
+    google_auth_client_id     # The Google OAuth Client ID
     google_auth_secret        # The Google OAuth Client Secret
    
 ### Example Usage w/ environment variables
