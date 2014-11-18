@@ -14,7 +14,7 @@ Then simply run:
     fig up
    
 The container will be built and an nginx proxy automatically configure to
-connect to the google auth proxy. Navigate to http://<docker ip>/ping to check
+connect to the google auth proxy. Navigate to http://(docker ip)/ping to check
 out whether the proxy is up and running.
 
 ### Quickstart without Fig
