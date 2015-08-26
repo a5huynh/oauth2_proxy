@@ -10,17 +10,30 @@ This is also an automated
 [Docker Hub build](https://registry.hub.docker.com/u/a5huynh/google-auth-proxy/)
 
 ### Quickstart with Docker Compose
-First, configure your client secret/id/cookie secret in the `docker-compose.yml` file.
+First, configure your client secret/id/cookie secret in the `docker-compose.yml` file
+and replace all references to `example.com` with your domain.
+
 Then simply run:
 
     docker-compose up
 
 The container will be built and an nginx proxy automatically configure to
-connect to the google auth proxy. Navigate to http://(docker ip)/ping to check
+connect to the oauth2 proxy. Navigate to http://(docker ip)/ping to check
 out whether the proxy is up and running.
 
+You will be asked to authenticated and if successful, redirected to the upstream
+nginx container serving a simple HTML page.
+
 ### Quickstart without Docker Compose
+
+The following example assumes you have your upstream host located at `upstream:80`
+
     docker run -P a5huynh/oauth2_proxy \
+        --cookie-secure=false \
+        --upstream="http://upstream:80" \
+        --http-address="0.0.0.0:4180" \
+        --redirect-url="http://example.com/oauth2/callback" \
+        --email-domain="example.com" \
         --cookie-secret=<cookie-secret> \
         --client-id=<client-id> \
         --client-secret=<client-secret>
