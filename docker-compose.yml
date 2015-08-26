@@ -1,0 +1,28 @@
+# Description of Containers:
+#
+#   auth    This is the oauth2_proxy container
+#
+#   proxy   This is the web proxy pointing to the google_auth container
+#
+
+# Google OAuth Proxy
+authproxy:
+  build: .
+  ports:
+    - "80:4180"
+  links:
+    - "upstream:upstream"
+  command: --upstream=upstream:80 --http-address=0.0.0.0:4180 --redirect-url="http://docker.example.com/oauth2/callback" --email-domain="workpology.com"
+  environment:
+    OAUTH2_PROXY_COOKIE_SECRET: totally-secret-key
+    OAUTH2_PROXY_COOKIE_DOMAIN: docker.example.com
+    OAUTH2_PROXY_CLIENT_ID: <YOUR CLIENT ID>
+    OAUTH2_PROXY_CLIENT_SECRET: <YOUR CLIENT SECRET>
+
+# NGINX proxy forwarding
+upstream:
+  image: nginx
+  ports:
+    - "8080:80"
+  volumes:
+    - ".:/usr/share/nginx/html:ro"
