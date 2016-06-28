@@ -1,5 +1,5 @@
 FROM golang:latest
-MAINTAINER Andrew Huynh <andrew@productbio.com>
+MAINTAINER Andrew Huynh <a5thuynh@gmail.com>
 
 # When this Dockerfile was last refreshed (year/month/day)
 ENV REFRESHED_AT 2016-06-28
