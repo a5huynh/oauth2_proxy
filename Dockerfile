@@ -2,7 +2,8 @@ FROM golang:latest
 MAINTAINER Andrew Huynh <andrew@productbio.com>
 
 # When this Dockerfile was last refreshed (year/month/day)
-ENV REFRESHED_AT 2015-08-25
+ENV REFRESHED_AT 2016-06-28
+ENV OAUTH2_PROXY_VERSION 2.1
 
 # Checkout bitly's latest google-auth-proxy code from Github
 RUN go get github.com/bitly/oauth2_proxy
