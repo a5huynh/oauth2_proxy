@@ -1,8 +1,8 @@
-FROM golang:latest
+FROM debian:stable-slim
 MAINTAINER Andrew Huynh <a5thuynh@gmail.com>
 
 # When this Dockerfile was last refreshed (year/month/day)
-ENV REFRESHED_AT 2017-05-26
+ENV REFRESHED_AT 2017-10-24
 ENV OAUTH2_PROXY_VERSION 2.2
 
 # Checkout bitly's latest google-auth-proxy code from Github
