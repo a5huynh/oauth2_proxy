@@ -7,7 +7,7 @@ Check out the bitly github page for more details on the different command line
 options that can be passed in.
 
 This is also an automated
-[Docker Hub build](https://registry.hub.docker.com/u/a5huynh/google-auth-proxy/)
+[Docker Hub build](https://hub.docker.com/r/a5huynh/oauth2_proxy/)
 
 ### Quickstart with Docker Compose
 First, configure your client secret/id/cookie secret in the `docker-compose.yml` file
