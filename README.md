@@ -7,7 +7,12 @@ Check out the bitly github page for more details on the different command line
 options that can be passed in.
 
 This is also an automated
-[Docker Hub build](https://registry.hub.docker.com/u/a5huynh/google-auth-proxy/)
+[Docker Hub build](https://hub.docker.com/r/a5huynh/oauth2_proxy/)
+
+### Supported tags and respective `Dockerfile` links
+* `2.2-debian` ([Dockerfile](https://github.com/a5huynh/oauth2_proxy/blob/cb657302b1a433e654a6cd97e30aa0c0dee8075c/Dockerfile))
+* `2.2` ([Dockerfile](https://github.com/a5huynh/oauth2_proxy/blob/5c18f223851745d3132faf64cab6ea9bb056fe7f/Dockerfile))
+* `2.1` ([Dockerfile](https://github.com/a5huynh/oauth2_proxy/blob/77b5f5afb919bb9d7983f901504987c9aaf2dfb9/Dockerfile))
 
 ### Quickstart with Docker Compose
 First, configure your client secret/id/cookie secret in the `docker-compose.yml` file
