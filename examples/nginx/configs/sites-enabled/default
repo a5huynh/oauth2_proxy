@@ -13,6 +13,6 @@ server {
         proxy_send_timeout 30;
         proxy_read_timeout 30;
 
-    	proxy_pass http://authproxy:4180;
+        proxy_pass http://authproxy:4180;
     }
 }
