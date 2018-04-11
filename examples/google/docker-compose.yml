@@ -7,7 +7,7 @@ version: '3'
 
 services:
   authproxy:
-    build: .
+    build: ../..
     ports:
       - "4180:4180"
     command: --cookie-secure=false --upstream="http://upstream:80" --http-address="0.0.0.0:4180" --redirect-url="http://docker.example.com/oauth2/callback" --email-domain="example.com"
