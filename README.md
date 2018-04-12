@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/a5huynh/oauth2_proxy.svg?branch=master)](https://travis-ci.org/a5huynh/oauth2_proxy)
+
+
 ## oauth2_proxy dockerization
 
 This is a Dockerization of the handy dandy
@@ -23,7 +26,7 @@ Then simply run:
     docker-compose up
 
 The container will be built and an nginx proxy automatically configure to
-connect to the oauth2 proxy. Navigate to http://(docker ip)/ping to check
+connect to the oauth2 proxy. Navigate to http://localhost:4180/ping to check
 out whether the proxy is up and running.
 
 You will be asked to authenticated and if successful, redirected to the upstream

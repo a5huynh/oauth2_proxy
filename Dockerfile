@@ -1,5 +1,5 @@
 FROM debian:stable-slim
-MAINTAINER Andrew Huynh <a5thuynh@gmail.com>
+LABEL maintainer="Andrew Huynh <a5thuynh@gmail.com>"
 
 # When this Dockerfile was last refreshed (year/month/day)
 ENV REFRESHED_AT 2017-10-24

@@ -6,3 +6,6 @@ build:
 
 clean:
 	docker rmi $(IMG_NAME)
+
+test:
+	./tests/run_test.sh

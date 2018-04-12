@@ -1,0 +1,30 @@
+# Following the documentation for Docker usage here:
+# https://docs.travis-ci.com/user/docker/
+sudo: required
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.20.1
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+before_script:
+  # Build and start the server
+  - docker-compose up --build -d
+
+script:
+  - make test
+
+after_script:
+  - docker-compose down

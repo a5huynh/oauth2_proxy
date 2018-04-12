@@ -1,27 +1,30 @@
+version: '3'
 # Description of Containers:
 #
 #   authproxy   This is the oauth2_proxy container
 #   upstream    This is the upstream app that is protected by the oauth2_proxy
 #
 
-# Google OAuth Proxy
-authproxy:
-  build: .
-  ports:
-    - "80:4180"
-  links:
-    - "upstream:upstream"
-  command: --cookie-secure=false --upstream="http://upstream:80" --http-address="0.0.0.0:4180" --redirect-url="http://docker.example.com/oauth2/callback" --email-domain="example.com"
-  environment:
-    OAUTH2_PROXY_COOKIE_SECRET: totally-secret-key
-    OAUTH2_PROXY_COOKIE_DOMAIN: docker.example.com
-    OAUTH2_PROXY_CLIENT_ID: <YOUR CLIENT ID>
-    OAUTH2_PROXY_CLIENT_SECRET: <YOUR CLIENT SECRET>
+services:
+  authproxy:
+    build: .
+    ports:
+      - "4180:4180"
+    command: --cookie-secure=false --upstream="http://upstream:80" --http-address="0.0.0.0:4180" --redirect-url="http://docker.example.com/oauth2/callback" --email-domain="example.com"
+    environment:
+      OAUTH2_PROXY_COOKIE_SECRET: totally-secret-key
+      OAUTH2_PROXY_COOKIE_DOMAIN: docker.example.com
+      OAUTH2_PROXY_CLIENT_ID: client_id
+      OAUTH2_PROXY_CLIENT_SECRET: client_secret
 
-# NGINX example app
-upstream:
-  image: nginx
-  ports:
-    - "8080:80"
-  volumes:
-    - "./demo:/usr/share/nginx/html:ro"
+  # NGINX example app
+  upstream:
+    image: nginx:1-alpine
+    ports:
+      - "8888:80"
+    volumes:
+      - "./configs/nginx/sites-enabled:/etc/nginx/sites-enabled:ro"
+      - "./configs/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "./demo:/usr/share/nginx/html:ro"
+    depends_on:
+      - authproxy
