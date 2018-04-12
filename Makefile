@@ -8,4 +8,4 @@ clean:
 	docker rmi $(IMG_NAME)
 
 test:
-	./tests/run_tests.sh
+	./tests/run_test.sh
