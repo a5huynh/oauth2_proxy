@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  # Description of Containers:
+  #
+  #   authproxy   This is the oauth2_proxy container
+  #   upstream    This is the upstream app that is protected by the oauth2_proxy
+  #
+
+  # Azure OAuth Proxy
+  authproxy:
+    build: ../..
+    networks:
+      demo-net:
+    ports:
+      - "4180:4180"
+    command: [
+      "--provider=azure",
+      "--cookie-secure=false",
+      "--upstream=http://upstream:80",
+      "--http-address=0.0.0.0:4180",
+      "--redirect-url=http://localhost/oauth2/callback",
+      "--email-domain=<YOUR AZURE EMAIL DOMAIN HERE>",
+      "--azure-tenant=<YOUR AZURE TENANT ID HERE>"
+    ]
+    environment:
+      OAUTH2_PROXY_COOKIE_SECRET: totally-secret-key
+      OAUTH2_PROXY_COOKIE_DOMAIN: localhost
+      OAUTH2_PROXY_CLIENT_ID: <YOUR AZURE OAUTH APPLICATION ID HERE>
+      OAUTH2_PROXY_CLIENT_SECRET: <YOUR AZURE OAUTH APPLICATION KEY HERE>
+
+  # NGINX example app
+  upstream:
+    build: ../nginx
+    networks:
+      demo-net:
+    ports:
+      - "80:80"
+
+networks:
+  demo-net:
+
+# vim: sw=2 sts=2 et
