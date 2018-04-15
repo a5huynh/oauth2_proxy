@@ -11,7 +11,9 @@ addons:
       - docker-ce
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.20.1
+  global:
+    - DOCKER_COMPOSE_VERSION=1.20.1
+    - DOCKER_COMPOSE_FILE="examples/google/docker-compose.yml"
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -21,10 +23,10 @@ before_install:
 
 before_script:
   # Build and start the server
-  - docker-compose up --build -d
+  - docker-compose -f "$DOCKER_COMPOSE_FILE" up --build -d
 
 script:
   - make test
 
 after_script:
-  - docker-compose down
+  - docker-compose -f "$DOCKER_COMPOSE_FILE" down
