@@ -1,13 +1,17 @@
 version: '3'
-# Description of Containers:
-#
-#   authproxy   This is the oauth2_proxy container
-#   upstream    This is the upstream app that is protected by the oauth2_proxy
-#
 
 services:
+  # Description of Containers:
+  #
+  #   authproxy   This is the oauth2_proxy container
+  #   upstream    This is the upstream app that is protected by the oauth2_proxy
+  #
+
+  # Google OAuth Proxy
   authproxy:
-    build: .
+    build: ../..
+    networks:
+      demo-net:
     ports:
       - "4180:4180"
     command: --cookie-secure=false --upstream="http://upstream:80" --http-address="0.0.0.0:4180" --redirect-url="http://docker.example.com/oauth2/callback" --email-domain="example.com"
@@ -19,12 +23,15 @@ services:
 
   # NGINX example app
   upstream:
-    image: nginx:1-alpine
+    build: ../nginx
+    networks:
+      demo-net:
     ports:
       - "8888:80"
-    volumes:
-      - "./configs/nginx/sites-enabled:/etc/nginx/sites-enabled:ro"
-      - "./configs/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
-      - "./demo:/usr/share/nginx/html:ro"
     depends_on:
       - authproxy
+
+networks:
+  demo-net:
+
+# vim: sw=2 sts=2 et
