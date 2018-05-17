@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/a5huynh/oauth2_proxy.svg?branch=master)](https://travis-ci.org/a5huynh/oauth2_proxy)
-
+[![Build Status](https://travis-ci.org/a5huynh/oauth2_proxy.svg?branch=master)](https://travis-ci.org/a5huynh/oauth2_proxy) [![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## oauth2_proxy dockerization
 
