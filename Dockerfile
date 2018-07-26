@@ -1,8 +1,8 @@
-FROM alpine:3.7
+FROM alpine:3.8
 LABEL maintainer="Andrew Huynh <a5thuynh@gmail.com>"
 
 # When this Dockerfile was last refreshed (year/month/day)
-ENV REFRESHED_AT 2018-04-11
+ENV REFRESHED_AT 2018-07-25
 ENV OAUTH2_PROXY_VERSION 2.2
 
 # Checkout bitly's latest google-auth-proxy code from Github
