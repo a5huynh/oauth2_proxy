@@ -1,5 +1,13 @@
 [![Build Status](https://travis-ci.org/a5huynh/oauth2_proxy.svg?branch=master)](https://travis-ci.org/a5huynh/oauth2_proxy) [![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Official fork for `bitly/oauth2_proxy`
+FYI for those coming here, as of 03/2019 the bitly project is no longer getting updated and has been 
+officially forked to a new project: https://github.com/pusher/oauth2_proxy
+
+This new project has been getting updates and has it's own Docker image. If you're interested in
+using the latest and greatest, please check them out! Otherwise this repo + Docker image will stay
+as is 🙂.
+
 ## oauth2_proxy dockerization
 
 This is a Dockerization of the handy dandy
